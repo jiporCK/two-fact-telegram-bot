@@ -2,27 +2,34 @@ import java.util.Scanner;
 
 public class TelegramDemo {
 
-    private static String email = "admin@gmail.com";
-    private static String password = "admin@123";
-    private static String generatedCode;
+    private static final String EMAIL = "admin@gmail.com";
+    private static final String PASSWORD = "admin@123";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter your email: ");
-        email = scanner.nextLine();
+        while (true) {
+            System.out.print("Enter your email: ");
+            String email = scanner.nextLine();
 
-        System.out.print("Enter your password: ");
-        password = scanner.nextLine();
+            System.out.print("Enter your password: ");
+            String password = scanner.nextLine();
+
+            if (email.equals(EMAIL) && password.equals(PASSWORD)) {
+                break;
+            } else {
+                System.out.println("Invalid email or password");
+            }
+        }
 
         System.out.println("Sending confirmation code to your Telegram...");
 
-        generatedCode = String.valueOf((int)(Math.random() * 900000) + 100000);
+        String generatedCode = String.valueOf((int) (Math.random() * 900000) + 100000);
 
         TelegramService telegramService = new TelegramService();
         telegramService.sendCodeToTelegram(generatedCode);
 
-        System.out.println("Please enter the code you received:");
+        System.out.print("Please enter the code you received: ");
 
         String enteredCode = scanner.nextLine();
 
