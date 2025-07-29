@@ -27,7 +27,19 @@ public class TelegramDemo {
         String generatedCode = String.valueOf((int) (Math.random() * 900000) + 100000);
 
         TelegramService telegramService = new TelegramService();
-        telegramService.sendCodeToTelegram(generatedCode);
+        Thread sendThread = new Thread(() -> {
+            telegramService.sendCodeToTelegram(generatedCode);
+            System.out.println("✅ Code sent via Telegram.");
+        });
+
+        sendThread.start();
+
+        try {
+            sendThread.join(); // Wait for code to be sent before asking for input
+        } catch (InterruptedException e) {
+            System.out.println("Error while sending code.");
+            return;
+        }
 
         System.out.print("Please enter the code you received: ");
 
