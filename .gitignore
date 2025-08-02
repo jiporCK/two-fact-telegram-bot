@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 
 src/Environment.java
+.env
 
 ### Eclipse ###
 .apt_generated

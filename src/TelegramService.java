@@ -7,8 +7,6 @@ import java.nio.charset.StandardCharsets;
 
 public class TelegramService {
 
-
-
     public void sendCodeToTelegram(String code) {
         try {
             String text = URLEncoder.encode("Your confirm code is: " + code, StandardCharsets.UTF_8);
@@ -30,7 +28,7 @@ public class TelegramService {
 //            System.out.println("Telegram response: " + response.body());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage() );
         }
     }
 }
