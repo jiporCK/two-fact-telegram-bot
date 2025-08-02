@@ -2,9 +2,6 @@ import java.util.Scanner;
 
 public class TelegramDemo {
 
-    private static final String EMAIL = "admin@gmail.com";
-    private static final String PASSWORD = "admin@123";
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -15,7 +12,7 @@ public class TelegramDemo {
             System.out.print("Enter your password: ");
             String password = scanner.nextLine();
 
-            if (email.equals(EMAIL) && password.equals(PASSWORD)) {
+            if (email.equals(Environment.EMAIL) && password.equals(Environment.PASSWORD)) {
                 break;
             } else {
                 System.out.println("Invalid email or password");

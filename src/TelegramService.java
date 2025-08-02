@@ -7,17 +7,15 @@ import java.nio.charset.StandardCharsets;
 
 public class TelegramService {
 
-    private static final String botToken = "8106845039:AAEGegzIJR1-h73xbGrutAQRykzU71AjDTg";
 
-    private static final String chatId = "1154817160";
 
     public void sendCodeToTelegram(String code) {
         try {
             String text = URLEncoder.encode("Your confirm code is: " + code, StandardCharsets.UTF_8);
             String url = String.format(
                     "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s",
-                    botToken,
-                    chatId,
+                    Environment.botToken,
+                    Environment.chatId,
                     text
             );
 
